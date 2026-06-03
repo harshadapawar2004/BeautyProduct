@@ -13,9 +13,15 @@ import {
 import { MyProduct } from "../context/ProductContext";
 import { MyCart } from "../context/CartContext";
 
-const AllProducts = () => {
+const AllProducts = ({category,price}) => {
+
   const { data } = MyProduct();
   const { handleCart } = MyCart();
+  const filterProduct = data.filter ((product)=>{
+    const categoryMatch = category.length === 0 || category.includes(product.category);
+
+    return categoryMatch;
+  })
 
   return (
     <section className="relative overflow-hidden bg-[#07070B] min-h-screen px-5 md:px-10 lg:px-16 py-14">
@@ -69,7 +75,7 @@ const AllProducts = () => {
 
       {/* PRODUCT GRID */}
       <div className="relative z-10 grid sm:grid-cols-2 xl:grid-cols-3 gap-10">
-        {data.map((item) => (
+        {filterProduct.map((item) => (
           <div
             key={item._id}
             className="group relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.03] hover:border-pink-500/30 transition duration-500"

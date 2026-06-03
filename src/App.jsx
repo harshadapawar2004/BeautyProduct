@@ -14,11 +14,13 @@ import My_Profile from "./pages/User/My_Profile";
 import Cart from "./pages/Order/Cart";
 import OrderHistory from "./pages/Order/OrderHistory";
 import { ToastContainer } from "react-toastify";
+import Scrolltotop from "./components/Scrolltotop";
 
 const App = () => {
   return (
     <>
       <ToastContainer position="top-center" autoClose={1500} theme="dark" />
+      <Scrolltotop/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
